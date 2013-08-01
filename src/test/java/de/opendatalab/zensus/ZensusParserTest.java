@@ -13,8 +13,9 @@ public class ZensusParserTest {
 	@Test
 	public void itShouldParse() throws Exception {
 		ZensusParser parser = new ZensusParser();
-		List<ZensusData> parse = parser.parse(ResourceUtils.getResourceAsStream("Zensus_Demographie_V1_28Mai2013.csv"),
-				"utf8");
-		assertFalse(parse.isEmpty());
+		List<ZensusData> result = parser.parse(
+				ResourceUtils.getResourceAsStream("Zensus_Demographie_V1_28Mai2013.csv"), "utf8");
+		assertFalse(result.isEmpty());
+		assertEquals(16339, result.size());
 	}
 }

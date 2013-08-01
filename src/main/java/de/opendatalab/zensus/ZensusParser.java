@@ -11,7 +11,14 @@ import java.util.List;
 import org.supercsv.io.CsvListReader;
 import org.supercsv.prefs.CsvPreference;
 
+import de.opendatalab.utils.ResourceUtils;
+
 public class ZensusParser {
+
+	public static List<ZensusData> parseKnownData() {
+		return new ZensusParser().parse(ResourceUtils.getResourceAsStream("Zensus_Demographie_V1_28Mai2013.csv"),
+				"utf8");
+	}
 
 	public List<ZensusData> parse(InputStream in, String charset) {
 		List<ZensusData> result = new ArrayList<>(17000);
@@ -37,7 +44,7 @@ public class ZensusParser {
 	private ZensusData createZensusData(List<String> lineOfStrings) {
 		ZensusData data = new ZensusData();
 		int c = 0;
-		data.setSatzart(lineOfStrings.get(c++));
+		data.setSatzart(Category.byKey(lineOfStrings.get(c++)));
 		data.setAgs(lineOfStrings.get(c++));
 		data.setName(lineOfStrings.get(c++));
 		data.setEwz(parse(lineOfStrings.get(c++)));

@@ -2,7 +2,7 @@ package de.opendatalab.zensus;
 
 public class ZensusData {
 
-	private String satzart;
+	private Category satzart;
 	private String ags;
 	private String name;
 	private Integer ewz;
@@ -16,11 +16,11 @@ public class ZensusData {
 	private Integer alter4;
 	private Integer alter5;
 
-	public String getSatzart() {
+	public Category getSatzart() {
 		return satzart;
 	}
 
-	public void setSatzart(String satzart) {
+	public void setSatzart(Category satzart) {
 		this.satzart = satzart;
 	}
 
